@@ -1,3 +1,15 @@
+/* 重置默认样式 */
+a:link,
+a:visited,
+a:hover,
+a:active{
+  text-decoration: none;
+}
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
 .body_bg {
     background-color: #222D32;
   }
@@ -12,3 +24,105 @@
   .mt_150 {
     margin-top: 150px;
   }
+  .lt_aside{
+    width: 180px;
+    height: 100%;
+    background: #222D32;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    transition: all 1s;
+  }
+  .lt_aside.hiddenaside{
+    left:-180px;
+  }
+  .lt_aside .brand{
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 24px;
+    background-color: #367FA9;
+  }
+  .lt_aside .brand a{
+    color: white;
+    display: block;
+  }
+  .lt_aside .user{
+    padding-top: 30px;
+  }
+  .lt_aside .user img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block
+    }
+  .lt_aside .user p{
+    text-align: center;
+    color: white;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+  }
+  .lt_aside .nav a{
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+    padding-left: 40px;
+    border-left: 3px solid transparent;
+  }
+  .lt_aside .nav a.current{
+    background: #1d1f21;
+    border-left: 3px solid #006699;
+  }
+  .lt_aside .nav .child{
+    display: none;
+  }
+  .lt_aside .nav .child a{
+    padding-left: 60px;
+  }
+  .lt_main{
+    height: 2000px;
+    width: 100%;
+    padding-top: 50px;
+    background: pink;
+    padding-left: 180px;
+    transition: all 1s;
+  }
+  .lt_main.hiddenmain{
+    padding-left: 0;
+  }
+
+  .lt_main .lt_topbar{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    background: #3c8dbc;
+    padding-left: 180px;
+    z-index: 777;
+    padding-left: 180px;
+    transition: all 1s;
+  }
+  .lt_topbar.hiddenmain{
+    padding-left: 0;
+  }
+  .lt_topbar a {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+  }
+  .mt_20 {
+    margin-top: 20px;
+}
+.echarts_left,.echarts_right{
+  height: 400px;
+  width: 48%;
+  background-color: skyblue;
+}
