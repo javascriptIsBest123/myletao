@@ -1,11 +1,11 @@
 $(document).ajaxStart(function () {
     NProgress.start();
-    console.log('ajax 开始');
+    // console.log('ajax 开始');
   });
 $(document).ajaxStop(function(){
     setTimeout(function(){
         NProgress.done();
-        console.log('ajax 结束');
+        // console.log('ajax 结束');
     },1000)
 })
 $(function(){

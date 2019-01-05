@@ -124,5 +124,13 @@ ul{
 .echarts_left,.echarts_right{
   height: 400px;
   width: 48%;
-  background-color: skyblue;
+  /* background-color: skyblue; */
+}
+
+/* table的样式 */
+.table.table-bordered th,
+.table.table-bordered td {
+  text-align: center;
+  /* 设置单位格内容 垂直对齐方式 */
+  vertical-align: middle;
 }
