@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
     <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
     <link rel="stylesheet" href="./css/common.css">
     <title>Document</title>
@@ -63,39 +64,100 @@
                     <a href="index.html">管理系统</a>
                 </li>
                 <li class="active">
-                    首页
+                    分类管理
+                </li>
+                <li class="active">
+                    一级分类
                 </li>
             </ol>
         </div>
-    </div>
-     <!-- 模态框 -->
-     <div class="modal fade" id="logoutModal" tabindex="-1">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <!-- 头部 -->
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
-                </div>
-                <!-- 中间 -->
-                <div class="modal-body">
-                    <p class="red"><i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗？</p>
-                </div>
-                <!-- 底部 -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" id="logoutBtn">退出</button>
+        <div class="lt_content">
+            <button class="btn btn-defaullt" id="addBtn">添加分类</button>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th style="width:20%">序号</th>
+                        <th style="width:80%">一级分类名</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 坑 -->
+                </tbody>
+            </table>
+            <div class="pull-right">
+                <ul id="pagintor">
+
+                </ul>
+            </div>
+        </div>
+        <!-- 模态框 -->
+        <div class="modal fade" id="logoutModal" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <!-- 头部 -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+                    </div>
+                    <!-- 中间 -->
+                    <div class="modal-body">
+                        <p class="red"><i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗？</p>
+                    </div>
+                    <!-- 底部 -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="logoutBtn">退出</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="./lib/jquery/jquery.min.js"></script>
-    <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="./lib/nprogress/nprogress.js"></script>
-    <script src="./lib/echarts/echarts.min.js"></script>
-    <script src="./js/common.js"></script>
-    <script src="./js/islogin.js"></script>
-    
+
+        <!-- 添加分类的模态框 -->
+        <div class="modal fade" id="Modalfirst" tabindex="-1">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <form id="form">
+                        <!-- 头部 -->
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">添加分类</h4>
+                        </div>
+                        <!-- 中间 -->
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="请输入一级分类"  name="categoryName">
+                            </div>
+                        </div>
+                        <!-- 底部 -->
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="submit" class="btn btn-primary">添加</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- 模板引擎 -->
+        <script type="text/html" id="firstTmp">
+            {{each rows v i}}
+                <tr>
+                    <td style="width:20%">{{i+1+(page-1)*size}}</td>
+                    <td style="width:80%">{{v.categoryName}}</td>
+                </tr>
+                {{/each}}
+        </script>
+        <script src="./lib/jquery/jquery.min.js"></script>
+        <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+        <script src="./lib/nprogress/nprogress.js"></script>
+        <script src="./lib/echarts/echarts.min.js"></script>
+        <script src="./lib/artTemplate/template-web.js"></script>
+        <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+        <script src="./js/common.js"></script>
+        <script src="./js/islogin.js"></script>
+        <script src="./js/first.js"></script>
+
 </body>
 
 </html>
