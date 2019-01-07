@@ -6,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./lib/bootstrap-validator/css/bootstrapValidator.min.css">
     <link rel="stylesheet" href="./lib/nprogress/nprogress.css">
     <link rel="stylesheet" href="./css/common.css">
-    
+
     <title>Document</title>
 </head>
 
@@ -64,17 +65,33 @@
                     <a href="index.html">管理系统</a>
                 </li>
                 <li class="active">
-                    首页
+                    分类管理
+                </li>
+                <li class="active">
+                    二级分类
                 </li>
             </ol>
-            <div class="lt_content">
-                <div class="pull-left echarts_left"></div>
-                <div class="pull-right echarts_right"></div>
+            <button class="btn btn-default btnadd">添加分类</button>
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>一级分类名</th>
+                        <th>二级分类名</th>
+                        <th>二级分类logo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 坑 -->
+                </tbody>
+            </table>
+            <div class="text-right">
+                <ul id="paginator"></ul>
             </div>
         </div>
     </div>
-     <!-- 模态框 -->
-     <div class="modal fade" id="logoutModal" tabindex="-1">
+    <!-- 模态框 -->
+    <div class="modal fade" id="logoutModal" tabindex="-1">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <!-- 头部 -->
@@ -94,11 +111,89 @@
             </div>
         </div>
     </div>
+
+
+    <!-- 二级分类模态框 -->
+    <div class="modal fade" id="secondModal" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <form id="form">
+                    <!-- 头部 -->
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">添加二级分类</h4>
+                    </div>
+                    <!-- 中间 -->
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <span id="dropdownText">请选择一级分类</span>
+                                    <span class="caret"></span>
+                                </button>
+                                <!-- 隐藏域,用来赋值一级分类 -->
+                                <input type="hidden" name="categoryId">
+                                <ul class="dropdown-menu dropdownul">
+                                    <!-- 坑 -->
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="brandName" class="form-control" placeholder="请输入二级分类名称">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="btn btn-default" for="fileupload">上传图片</label>
+                            <input type="file" name="pic1" id="fileupload" style="display:none" data-url="/category/addSecondCategoryPic"
+                                multiple>
+                        </div>
+                        <div class="form-group" id="imgBox">
+                            <img style="width:100px" src="./images/none.png">
+                            <!-- 设置图片的隐藏域 -->
+                            <input type="hidden" name="brandLogo">
+                        </div>
+
+                    </div>
+                    <!-- 底部 -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="submit" class="btn btn-primary" id="logoutBtn">添加</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- 渲染二级页面模板引擎 -->
+    <script type="text/html" id="secondTmp">
+        {{each rows v i}}
+        <tr>
+            <td> {{i+1 + (page-1)*size}}</td>
+            <td>{{v.categoryName}}</td>
+            <td>{{ v.brandName}}</td>
+            <td><img src ="{{v.brandLogo?v.brandLogo:'images/0.jpg'}}" height="50px"></td>
+        </tr>
+        {{/each}}
+    </script>
+
+    <!-- 渲染一级列表的模板 -->
+    <script type="text/html" id="list">
+        {{each rows v i}}
+        <li><a href="#" data-id="{{v.id}}">{{v.categoryName}}</a></li>
+        {{/each}}
+    </script>
+
     <script src="./lib/jquery/jquery.min.js"></script>
+    <script src="./lib/jquery-fileupload/jquery.ui.widget.js"></script>
+    <script src="./lib/jquery-fileupload/jquery.fileupload.js"></script>
     <script src="./lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="./lib/nprogress/nprogress.js"></script>
+    <script src="./lib/artTemplate/template-web.js"></script>
+    <script src="./lib/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+    <script src="./lib/bootstrap-paginator/bootstrap-paginator.min.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/islogin.js"></script>
+    <script src="./js/second.js"></script>
 </body>
 
 </html>
